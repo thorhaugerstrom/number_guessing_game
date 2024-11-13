@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -c"
+PSQL="psql --username=freecodecamp --dbname=number_guess -t --no-align -q -c"
 
 SECRET_NUMBER=$(( RANDOM % 1000 + 1 ))
 
@@ -25,8 +25,8 @@ GUESSES=0
 
 while true; do
   read GUESS
-  ((GUESSES++))
 
+  ((GUESSES++))
   if ! [[ $GUESS =~ ^[0-9]+$ ]]; then
     echo "That is not an integer, guess again:"
     continue
